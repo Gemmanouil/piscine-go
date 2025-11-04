@@ -1,0 +1,3 @@
+#!copilot for the win
+ find . -type f \( -name 'a*' -o -name '*z' -o -name 'z*a!' \)
+
