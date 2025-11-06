@@ -4,7 +4,7 @@ package piscine
 import "github.com/01-edu/z01"
 
 func PrintStr(s string) {
-	for _r := range s {
+	for _, r := range s {
 		z01.PrintRune(s)
 	}
 }
