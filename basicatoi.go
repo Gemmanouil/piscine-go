@@ -1,6 +1,6 @@
 package piscine
 
-func Atoi(s string) int {
+func BasicAtoi(s string) int {
 	result := 0
 	for i := 0; i < len(s); i++ {
 		char := s[i]
