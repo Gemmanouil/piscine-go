@@ -10,7 +10,7 @@ func PrintComb2() {
 			z01.PrintRune(rune(i%10 + '0'))
 			z01.PrintRune(' ')
 			z01.PrintRune(rune(j/10 + '0'))
-			z01.PrintRune(rune(j/10 + '0'))
+			z01.PrintRune(rune(j%10 + '0'))
 
 			if i != 98 || j != 99 {
 				z01.PrintRune(',')
