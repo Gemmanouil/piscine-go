@@ -9,12 +9,5 @@ func RecursiveFactorial(nb int) int {
 	if nb == 0 {
 		return 1 // το 0! είναι 1
 	}
-
-	result := nb * RecursiveFactorial(nb-1) // καλούμε ξανά τη συνάρτηση με nb-1
-
-	if result < 0 {
-		return 0 // αν γίνει αρνητικό σημαίνει overflow
-	}
-
-	return result
+	return nb * RecursiveFactorial(nb-1) // καλεί τον εαυτό της με μικρότερο αριθμό
 }
