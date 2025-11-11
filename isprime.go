@@ -1,7 +1,5 @@
 package piscine
 
-import "math"
-
 // IsPrime επιστρέφει true αν το nb είναι πρώτος αριθμός, αλλιώς false
 func IsPrime(nb int) bool {
 	if nb <= 1 {
@@ -14,11 +12,13 @@ func IsPrime(nb int) bool {
 		return false // όλοι οι άρτιοι αριθμοί εκτός του 2 δεν είναι πρώτοι
 	}
 
-	// Ελέγχουμε διαιρέτες από 3 μέχρι sqrt(nb), μόνο περιττούς
-	for i := 3; i <= int(math.Sqrt(float64(nb))); i += 2 {
+	// Ελέγχουμε μόνο τους περιττούς αριθμούς από 3 μέχρι όπου i*i > nb
+	i := 3
+	for i*i <= nb {
 		if nb%i == 0 {
 			return false // βρήκαμε διαιρέτη, άρα δεν είναι πρώτος
 		}
+		i += 2 // προχωράμε στον επόμενο περιττό αριθμό
 	}
 
 	return true // δεν βρέθηκε κανένας διαιρέτης, άρα είναι πρώτος
