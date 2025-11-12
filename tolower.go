@@ -6,7 +6,7 @@ func ToLower(s string) string {
 	// We loop through each character (rune) in the input string
 	for _, char := range s {
 		// Check if the character is a uppercase letter (between 'A' and 'Z')
-		if char >= 'a' && char <= 'z' {
+		if char >= 'A' && char <= 'Z' {
 			// Convert it to uppercase by adding 32 from its ASCII value
 			lowerChar := char + 32
 			// Add the uppercase character to the result string

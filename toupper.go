@@ -3,7 +3,7 @@ package piscine
 // ToUpper takes a string and returns a new string with all letters in uppercase
 func ToUpper(s string) string {
 	// We create a variable to hold the result string
-	var result string
+	result := " "
 
 	// We loop through each character (rune) in the input string
 	for _, char := range s {
