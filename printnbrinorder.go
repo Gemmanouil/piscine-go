@@ -29,6 +29,6 @@ func PrintNbrInOrder(n int) {
 
 	// Step 3: Print digits
 	for _, digit := range digits {
-		z01.PrintRune(rune(digit))
+		z01.PrintRune(rune(digit + '0'))
 	}
 }
