@@ -16,4 +16,5 @@ func ToLower(s string) string {
 			result += string(char)
 		}
 	}
+	return result
 }
