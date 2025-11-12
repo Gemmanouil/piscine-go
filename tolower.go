@@ -1,20 +1,24 @@
 package piscine
 
+// ToLower takes a string and returns a new string with all letters in lowercase
 func ToLower(s string) string {
-	// We create a variable to hold the result string
-	result := " "
-	// We loop through each character (rune) in the input string
+	// Create a variable to hold the result string
+	var result string
+
+	// Loop through each character (rune) in the input string
 	for _, char := range s {
-		// Check if the character is a uppercase letter (between 'A' and 'Z')
+		// Check if the character is an uppercase letter (between 'A' and 'Z')
 		if char >= 'A' && char <= 'Z' {
-			// Convert it to uppercase by adding 32 from its ASCII value
+			// Convert it to lowercase by adding 32 to its ASCII value
 			lowerChar := char + 32
-			// Add the uppercase character to the result string
+			// Add the lowercase character to the result string
 			result += string(lowerChar)
 		} else {
-			// If it's not a lowercase letter, just add it as it is
+			// If it's not an uppercase letter, just add it as it is
 			result += string(char)
 		}
 	}
+
+	// Return the final result string
 	return result
 }
