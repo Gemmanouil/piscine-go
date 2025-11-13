@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"sort"
 
 	"github.com/01-edu/z01"
 )
@@ -11,8 +10,16 @@ func main() {
 	// Get all arguments except the program name
 	args := os.Args[1:]
 
-	// Sort arguments in ASCII order
-	sort.Strings(args)
+	// Bubble sort implementation to sort arguments in ASCII order
+	n := len(args)
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-i-1; j++ {
+			if args[j] > args[j+1] {
+				// Swap if out of order
+				args[j], args[j+1] = args[j+1], args[j]
+			}
+		}
+	}
 
 	// Print each argument character by character
 	for _, arg := range args {
