@@ -14,5 +14,4 @@ func AppendRange(min, max int) []int {
 	}
 	// retutns the list
 	return slice
-
 }
