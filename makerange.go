@@ -10,7 +10,7 @@ func MakeRange(min, max int) []int {
 	varsize := max - min
 	slice := make([]int, varsize)
 	// declaring counter also while counter is less than max and more than min the loop goes on
-	for count := min; count < varsize; count++ {
+	for count := 0; count < varsize; count++ {
 		slice[count] = min + count
 	}
 	// retutns the list
