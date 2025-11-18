@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"github.com/01-edu/z01"
 )
 
 // Define a struct named 'point' with two integer fields: x and y
@@ -16,13 +16,38 @@ func setPoint(ptr *point) {
 	ptr.y = 21
 }
 
-func main() {
-	// Create a pointer to a new point struct
-	points := &point{}
+// Helper function to print an integer using z01.PrintRune
+func printNbr(n int) {
+	if n < 0 {
+		z01.PrintRune('-')
+		n = -n
+	}
+	if n >= 10 {
+		printNbr(n / 10)
+	}
+	z01.PrintRune(rune(n%10 + '0'))
+}
 
-	// Call the function to set the values of the point
+func main() {
+	points := &point{}
 	setPoint(points)
 
-	// Print the values of x and y using formatted output
-	fmt.Printf("x = %d, y = %d\n", points.x, points.y)
+	// Print "x = "
+	z01.PrintRune('x')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	printNbr(points.x)
+
+	// Print ", y = "
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+	z01.PrintRune('y')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	printNbr(points.y)
+
+	// Print newline
+	z01.PrintRune('\n')
 }
