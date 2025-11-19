@@ -1,62 +1,92 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"strconv"
+
+	"github.com/01-edu/z01"
 )
 
+func Atoi(s string) (int, bool) {
+	sign := 1
+	if len(s) == 0 {
+		return 0, false
+	}
+	if s[0] == '-' {
+		sign = -1
+		s = s[1:]
+	}
+	if s == "" {
+		return 0, false
+	}
+	n := 0
+	for _, r := range s {
+		if r < '0' || r > '9' {
+			return 0, false
+		}
+		n = n*10 + int(r-'0')
+	}
+	return n * sign, true
+}
+
+func PrintNbr(n int) {
+	if n == 0 {
+		z01.PrintRune('0')
+		z01.PrintRune('\n')
+		return
+	}
+	if n < 0 {
+		z01.PrintRune('-')
+		n = -n
+	}
+	var digits []rune
+	for n > 0 {
+		digits = append(digits, rune(n%10)+'0')
+		n /= 10
+	}
+	for i := len(digits) - 1; i >= 0; i-- {
+		z01.PrintRune(digits[i])
+	}
+	z01.PrintRune('\n')
+}
+
+func PrintStr(s string) {
+	for _, r := range s {
+		z01.PrintRune(r)
+	}
+	z01.PrintRune('\n')
+}
+
 func main() {
-	// Check for exactly 3 arguments (excluding program name)
 	if len(os.Args) != 4 {
-		return // Invalid number of arguments
+		return
 	}
 
-	// Parse the first and third arguments as integers
-	a, err1 := strconv.ParseInt(os.Args[1], 10, 64)
-	b, err2 := strconv.ParseInt(os.Args[3], 10, 64)
+	a, ok1 := Atoi(os.Args[1])
+	b, ok2 := Atoi(os.Args[3])
 	op := os.Args[2]
 
-	// If either value is not a valid integer, exit silently
-	if err1 != nil || err2 != nil {
+	if !ok1 || !ok2 {
 		return
 	}
 
-	// Handle division or modulo by zero
-	if (op == "/" || op == "%") && b == 0 {
-		if op == "/" {
-			fmt.Println("No division by 0")
-		} else {
-			fmt.Println("No modulo by 0")
-		}
+	if op == "/" && b == 0 {
+		PrintStr("No division by 0")
+		return
+	}
+	if op == "%" && b == 0 {
+		PrintStr("No modulo by 0")
 		return
 	}
 
-	// Perform the operation
-	switch op {
-	case "+":
-		result := a + b
-		if (a > 0 && b > 0 && result < 0) || (a < 0 && b < 0 && result > 0) {
-			return // Overflow
-		}
-		fmt.Println(result)
-	case "-":
-		result := a - b
-		if (a > 0 && b < 0 && result < 0) || (a < 0 && b > 0 && result > 0) {
-			return // Overflow
-		}
-		fmt.Println(result)
-	case "*":
-		result := a * b
-		if b != 0 && result/b != a {
-			return // Overflow
-		}
-		fmt.Println(result)
-	case "/":
-		fmt.Println(a / b)
-	case "%":
-		fmt.Println(a % b)
-	default:
-		return // Invalid operator
+	if op == "+" {
+		PrintNbr(a + b)
+	} else if op == "-" {
+		PrintNbr(a - b)
+	} else if op == "*" {
+		PrintNbr(a * b)
+	} else if op == "/" {
+		PrintNbr(a / b)
+	} else if op == "%" {
+		PrintNbr(a % b)
 	}
 }
