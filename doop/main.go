@@ -1,10 +1,6 @@
 package main
 
-import (
-	"os"
-
-	"github.com/01-edu/z01"
-)
+import "os"
 
 func Atoi(s string) (int, bool) {
 	sign := 1
@@ -30,30 +26,26 @@ func Atoi(s string) (int, bool) {
 
 func PrintNbr(n int) {
 	if n == 0 {
-		z01.PrintRune('0')
-		z01.PrintRune('\n')
+		PrintStr("0\n")
 		return
 	}
+	str := ""
 	if n < 0 {
-		z01.PrintRune('-')
+		str += "-"
 		n = -n
 	}
-	var digits []rune
+	digits := ""
 	for n > 0 {
-		digits = append(digits, rune(n%10)+'0')
+		digits = string(rune(n%10+'0')) + digits
 		n /= 10
 	}
-	for i := len(digits) - 1; i >= 0; i-- {
-		z01.PrintRune(digits[i])
-	}
-	z01.PrintRune('\n')
+	PrintStr(str + digits + "\n")
 }
 
 func PrintStr(s string) {
 	for _, r := range s {
-		z01.PrintRune(r)
+		os.Stdout.Write([]byte{byte(r)})
 	}
-	z01.PrintRune('\n')
 }
 
 func main() {
@@ -70,11 +62,11 @@ func main() {
 	}
 
 	if op == "/" && b == 0 {
-		PrintStr("No division by 0")
+		PrintStr("No division by 0\n")
 		return
 	}
 	if op == "%" && b == 0 {
-		PrintStr("No modulo by 0")
+		PrintStr("No modulo by 0\n")
 		return
 	}
 
