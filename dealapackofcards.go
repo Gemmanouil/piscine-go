@@ -1,13 +1,20 @@
 package piscine
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/01-edu/z01"
+)
 
 func DealAPackOfCards(deck []int) {
+	// We know the deck always has 12 cards and 4 players
+	cardsPerPlayer := 3
 	players := 4
-	cardsPerPlayer := len(deck) / players
 
 	for i := 0; i < players; i++ {
+		// Print "Player X: "
 		fmt.Printf("Player %d: ", i+1)
+
 		for j := 0; j < cardsPerPlayer; j++ {
 			card := deck[i*cardsPerPlayer+j]
 			if j == cardsPerPlayer-1 {
@@ -16,6 +23,8 @@ func DealAPackOfCards(deck []int) {
 				fmt.Printf("%d, ", card)
 			}
 		}
-		fmt.Println()
+
+		// End line using z01.PrintRune
+		z01.PrintRune('\n')
 	}
 }
