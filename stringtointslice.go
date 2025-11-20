@@ -22,20 +22,20 @@ func StringToIntSlice(str string) {
 	z01.PrintRune('\n')
 }
 
-/*func printInt(n int) {
-	if n == 0 {
-		z01.PrintRune('0')
-		return
-	}
-
-	var digits []rune
-	for n > 0 {
-		d := rune('0' + n%10)
-		digits = append([]rune{d}, digits...)
-		n /= 10
-	}
-
-	for _, d := range digits {
-		z01.PrintRune(d)
-	}
-}/*
+//func printInt(n int) {
+//if n == 0 {
+//		z01.PrintRune('0')
+//		return
+//	}
+//
+//	var digits []rune
+//	for n > 0 {
+//		d := rune('0' + n%10)
+//		digits = append([]rune{d}, digits...)
+//		n /= 10
+//	}
+//
+//	for _, d := range digits {
+//		z01.PrintRune(d)
+//	}
+//
