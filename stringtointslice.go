@@ -22,7 +22,7 @@ func StringToIntSlice(str string) {
 	z01.PrintRune('\n')
 }
 
-func printInt(n int) {
+/*func printInt(n int) {
 	if n == 0 {
 		z01.PrintRune('0')
 		return
@@ -38,4 +38,4 @@ func printInt(n int) {
 	for _, d := range digits {
 		z01.PrintRune(d)
 	}
-}
+}/*
