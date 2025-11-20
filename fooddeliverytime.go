@@ -12,7 +12,7 @@ func FoodDeliveryTime(order string) int {
 	menu := []food{burger, nuggets, chips}
 	for _, item := range menu {
 		if item.name == order {
-			return 404
+			return item.preptime
 		}
 	}
 	return 404
