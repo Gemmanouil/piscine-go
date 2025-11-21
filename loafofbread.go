@@ -1,45 +1,55 @@
 package piscine
 
-func LoafOfBread(str string) string {
+func LoafOfBread(s string) string {
 	// Count non-space characters
 	count := 0
-	for _, r := range str {
+	for _, r := range s {
 		if r != ' ' {
 			count++
 		}
 	}
+
+	// Special case: empty or only spaces → just newline
+	if count == 0 {
+		return "\n"
+	}
+
+	// Less than 5 non-space chars → Invalid Output
 	if count < 5 {
 		return "Invalid Output\n"
 	}
 
-	result := []rune{}
-	collected := 0
+	result := ""
+	temp := ""
 	skipNext := false
 
-	for _, r := range str {
-		if r == ' ' {
-			continue
-		}
+	for _, r := range s {
 		if skipNext {
 			skipNext = false
 			continue
 		}
 
-		result = append(result, r)
-		collected++
+		if r == ' ' {
+			continue
+		}
 
-		if collected == 5 {
-			result = append(result, ' ')
-			collected = 0
+		temp += string(r)
+
+		// When we have a full 5-char block
+		if len(temp) == 5 {
+			if result != "" {
+				result += " "
+			}
+			result += temp
+			temp = ""
 			skipNext = true
 		}
 	}
 
-	// Remove trailing space if present
-	if len(result) > 0 && result[len(result)-1] == ' ' {
-		result = result[:len(result)-1]
+	// Add leftover characters (even if <5)
+	if temp != "" {
+		result += " " + temp
 	}
-	result = append(result, '\n')
 
-	return string(result)
+	return result + "\n"
 }
