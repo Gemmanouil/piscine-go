@@ -13,29 +13,29 @@ func LoafOfBread(str string) string {
 	}
 
 	result := []rune{}
-	word := []rune{}
-	skip := false
-	nonSpaceCount := 0
+	collected := 0
+	skipNext := false
 
 	for _, r := range str {
 		if r == ' ' {
 			continue
 		}
-		if skip {
-			skip = false
+		if skipNext {
+			skipNext = false
 			continue
 		}
-		word = append(word, r)
-		nonSpaceCount++
-		if nonSpaceCount%5 == 0 {
-			result = append(result, word...)
+
+		result = append(result, r)
+		collected++
+
+		if collected == 5 {
 			result = append(result, ' ')
-			word = []rune{}
-			skip = true
+			collected = 0
+			skipNext = true
 		}
 	}
 
-	// Remove trailing space and add newline
+	// Remove trailing space if present
 	if len(result) > 0 && result[len(result)-1] == ' ' {
 		result = result[:len(result)-1]
 	}
