@@ -1,4 +1,4 @@
-package piscine
+package main
 
 import "github.com/01-edu/z01"
 
@@ -31,11 +31,26 @@ func CloseDoor(ptrDoor *Door) bool {
 }
 
 func IsDoorOpen(ptrDoor *Door) bool {
-	PrintStr("Is the Door opened?")
+	PrintStr("is the Door opened ?")
 	return ptrDoor.state == OPEN
 }
 
 func IsDoorClose(ptrDoor *Door) bool {
-	PrintStr("Is the Door closed?")
+	PrintStr("is the Door closed ?")
 	return ptrDoor.state == CLOSE
+}
+
+func main() {
+	door := &Door{}
+
+	OpenDoor(door)
+	if IsDoorClose(door) {
+		OpenDoor(door)
+	}
+	if IsDoorOpen(door) {
+		CloseDoor(door)
+	}
+	if door.state == OPEN {
+		CloseDoor(door)
+	}
 }
