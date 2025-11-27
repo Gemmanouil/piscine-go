@@ -21,5 +21,4 @@ func DescendComb() {
 			}
 		}
 	}
-	return 
 }
