@@ -2,7 +2,7 @@ package piscine
 
 // ShoppingSummaryCounter takes a string of items separated by spaces,
 // counts how many times each item appears, and returns a map with the summary.
-// It ignores empty words and single "e".
+// It ignores empty words and single-character words.
 func ShoppingSummaryCounter(str string) map[string]int {
 	summary := make(map[string]int) // εδώ θα αποθηκεύσουμε τα αποτελέσματα
 	wordRunes := []rune{}           // προσωρινό buffer για να χτίζουμε κάθε λέξη
@@ -12,8 +12,8 @@ func ShoppingSummaryCounter(str string) map[string]int {
 			// Αν βρούμε κενό, τελειώνει μια λέξη.
 			if len(wordRunes) > 0 {
 				word := string(wordRunes)
-				// αγνοούμε το "e"
-				if word != "e" {
+				// αγνοούμε όλες τις μονογράμματες λέξεις
+				if len(word) > 1 {
 					summary[word]++
 				}
 				wordRunes = []rune{} // καθαρίζουμε για την επόμενη λέξη
@@ -27,7 +27,7 @@ func ShoppingSummaryCounter(str string) map[string]int {
 	// Μετά το loop, μπορεί να έχει μείνει μια τελευταία λέξη.
 	if len(wordRunes) > 0 {
 		word := string(wordRunes)
-		if word != "e" {
+		if len(word) > 1 {
 			summary[word]++
 		}
 	}
