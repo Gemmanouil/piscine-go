@@ -2,22 +2,23 @@ package piscine
 
 func ShoppingSummaryCounter(str string) map[string]int {
 	summary := make(map[string]int)
-	word := ""
+	wordRunes := []rune{}
 
 	for _, r := range str {
 		if r == ' ' {
-			// Only add non-empty words
-			if word != "" {
+			if len(wordRunes) > 0 {
+				word := string(wordRunes)
 				summary[word]++
-				word = ""
+				wordRunes = []rune{} // reset
 			}
 		} else {
-			word += string(r)
+			wordRunes = append(wordRunes, r)
 		}
 	}
 
-	// Add the last word if exists
-	if word != "" {
+	// Add last word if exists
+	if len(wordRunes) > 0 {
+		word := string(wordRunes)
 		summary[word]++
 	}
 
