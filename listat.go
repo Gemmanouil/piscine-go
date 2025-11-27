@@ -2,29 +2,31 @@ package piscine
 
 // NodeL represents a single node in the linked list
 type NodeL struct {
-	Data interface{} // Data can hold any type
-	Next *NodeL      // Pointer to the next node
+	Data interface{}
+	Next *NodeL
+}
+
+// List represents the linked list itself
+type List struct {
+	Head *NodeL
+	Tail *NodeL
 }
 
 // ListAt returns the pointer to the node at position pos
 func ListAt(l *NodeL, pos int) *NodeL {
-	// If the list is empty or pos is negative, return nil
 	if l == nil || pos < 0 {
 		return nil
 	}
 
-	current := l // Start from the given head node
-	index := 0   // Position counter
+	current := l
+	index := 0
 
-	// Traverse until we reach the desired position
 	for current != nil {
 		if index == pos {
-			return current // Found the node at position pos
+			return current
 		}
-		current = current.Next // Move to next node
+		current = current.Next
 		index++
 	}
-
-	// If pos is out of range, return nil
 	return nil
 }
