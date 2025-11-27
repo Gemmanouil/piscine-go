@@ -1,7 +1,7 @@
 package piscine
 
 // TreeNode definition
-type TreeNode1 struct {
+type TreeNode0 struct {
 	Left, Right, Parent *TreeNode
 	Data                string
 }
