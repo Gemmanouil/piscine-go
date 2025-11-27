@@ -1,18 +1,24 @@
 package piscine
 
-import "strings"
-
 // ShoppingSummaryCounter counts how many times each item appears in the string
 func ShoppingSummaryCounter(str string) map[string]int {
-	// Split the string into words (items)
-	words := strings.Fields(str)
-
-	// Create a map to store counts
 	summary := make(map[string]int)
+	word := ""
 
-	// Count occurrences of each word
-	for _, w := range words {
-		summary[w]++
+	for _, r := range str {
+		if r == ' ' {
+			if word != "" {
+				summary[word]++
+				word = ""
+			}
+		} else {
+			word += string(r)
+		}
+	}
+
+	// Add the last word if exists
+	if word != "" {
+		summary[word]++
 	}
 
 	return summary
