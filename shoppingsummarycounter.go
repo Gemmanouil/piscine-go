@@ -1,12 +1,12 @@
 package piscine
 
-// ShoppingSummaryCounter counts how many times each item appears in the string
 func ShoppingSummaryCounter(str string) map[string]int {
 	summary := make(map[string]int)
 	word := ""
 
 	for _, r := range str {
 		if r == ' ' {
+			// Only add non-empty words
 			if word != "" {
 				summary[word]++
 				word = ""
