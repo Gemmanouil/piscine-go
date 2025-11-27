@@ -1,15 +1,18 @@
 package piscine
 
-import "sort"
-
-// Abort returns the median of five integers
+// Abort returns the median of five integers without using sort package
 func Abort(a, b, c, d, e int) int {
-	// Put all numbers in a slice
 	nums := []int{a, b, c, d, e}
 
-	// Sort the slice
-	sort.Ints(nums)
+	// Simple bubble sort
+	for i := 0; i < len(nums); i++ {
+		for j := 0; j < len(nums)-1-i; j++ {
+			if nums[j] > nums[j+1] {
+				nums[j], nums[j+1] = nums[j+1], nums[j]
+			}
+		}
+	}
 
-	// Return the middle element (index 2)
+	// Median is the middle element (index 2)
 	return nums[2]
 }
