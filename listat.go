@@ -2,8 +2,8 @@ package piscine
 
 // NodeL represents a single node in the linked list
 type NodeL struct {
-	Data any    // Data can hold any type
-	Next *NodeL // Pointer to the next node
+	Data interface{} // Data can hold any type
+	Next *NodeL      // Pointer to the next node
 }
 
 // ListAt returns the pointer to the node at position pos
